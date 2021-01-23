@@ -6,7 +6,7 @@ services:
       context: ./frontend
       dockerfile: Dockerfile.prod
     container_name: crm_frontend
-    command: serve -s  build -l 3000
+    command: serve -s  build -l 4200
     restart: unless-stopped
     networks:
       - my_network

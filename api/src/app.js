@@ -13,6 +13,7 @@ const positionRoutes = require('./routes/position')
 app.use(passport.initialize())
 require('./middleware/passport')(passport)
 
+app.use('/src/uploads', express.static('src/uploads'))
 app.use(bodyParser.urlencoded({extended: true}))
 app.use(bodyParser.json())
 
