@@ -5,15 +5,15 @@ services:
     build:
       context: ./frontend
       dockerfile: Dockerfile.prod
-    container_name: crm_frontend
-    command: serve -s  build -l 4200
+    container_name: frontend
+    command: serve -s  build -l 3000
     restart: unless-stopped
     networks:
       - my_network
 
   api:
     build: ./api
-    container_name: crm_api
+    container_name: api
     restart: unless-stopped
     command: npm run start
     environment:
@@ -28,7 +28,7 @@ services:
 
   nginx:
     image: nginx:stable-alpine
-    container_name: crm_nginx
+    container_name: nginx
     ports:
     - "80:80"
     volumes:
@@ -41,7 +41,7 @@ services:
 
   api_db:
     image: mongo:latest
-    container_name: crm_api_db
+    container_name: api-db
     volumes:
       - mongodb_api:/data/db
     networks:
